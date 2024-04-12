@@ -1,0 +1,31 @@
+
+
+
+[tool.poetry]
+name = "intro_to_mountaineer"
+version = "0.1.0"
+description = ""
+authors = ["Rosario De Chiara <rosdec@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+mountaineer = "^0.4.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+runserver = "intro_to_mountaineer.cli:runserver"
+watch = "intro_to_mountaineer.cli:watch"
+build = "intro_to_mountaineer.cli:build"
+createdb = "intro_to_mountaineer.cli:createdb"
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
+
+
