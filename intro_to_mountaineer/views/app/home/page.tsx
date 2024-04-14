@@ -13,7 +13,7 @@ const CreatePost = ({ serverState }: { serverState: ServerState }) => {
         onClick={
           async () => {
             await serverState.add_blogpost({
-                payload: newBlogpost.toString()
+              payload: newBlogpost.toString()
             });
             setNewBlogpost("");
           }}>
@@ -24,6 +24,17 @@ const CreatePost = ({ serverState }: { serverState: ServerState }) => {
 };
 
 
+const ShowPosts = ({ serverState }: { serverState: ServerState }) => {
+  return (
+    serverState.posts.map((post) => (
+      <div key={post.id}>
+        <div>{post.text}</div>
+        <div>{post.data}</div>
+        <br></br>
+      </div>
+    )))
+}
+
 const Home = () => {
   const serverState = useServer();
 
@@ -32,6 +43,7 @@ const Home = () => {
       <h1>Your favorite blog</h1>
       <p>Blog list</p>
       <CreatePost serverState={serverState}></CreatePost>
+      <ShowPosts serverState={serverState}></ShowPosts>
     </div>
   );
 };
