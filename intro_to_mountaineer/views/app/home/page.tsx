@@ -1,5 +1,29 @@
-import React from "react";
-import { useServer } from "./_server/useServer";
+import React, { useState } from "react";
+import { ServerState, useServer } from "./_server/useServer";
+
+const CreatePost = ({ serverState }: { serverState: ServerState }) => {
+  const [newBlogpost, setNewBlogpost] = useState("");
+
+  return (
+    <div>
+      <input type="text"
+        value={newBlogpost}
+        onChange={(e) => setNewBlogpost(e.target.value)} />
+      <button
+        onClick={
+          async () => {
+            await serverState.add_blogpost({
+              requestBody: {
+                text: newBlogpost,
+              },
+            });
+            setNewBlogpost("");
+          }}>
+
+        Post</button>
+    </div>
+  );
+};
 
 
 const Home = () => {
@@ -7,8 +31,9 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Home</h1>
-      <p>Hello, world!</p>
+      <h1>Your favorite blog</h1>
+      <p>Blog list</p>
+      <CreatePost serverState={serverState}></CreatePost>
     </div>
   );
 };

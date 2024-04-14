@@ -6,4 +6,4 @@ class BlogPost(SQLModel, table=True):
     id: UUID = Field(default_factory=uuid4, primary_key=True)
 
     text: str
-    data: str = datetime.now()
+    data: str = datetime.now().isoformat()
