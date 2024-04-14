@@ -1,3 +1,1 @@
-
-# Specify sub-models here
-# Ex: from .detail import DetailItem
+from .blogpost import BlogPost
