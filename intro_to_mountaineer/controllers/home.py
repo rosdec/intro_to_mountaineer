@@ -19,9 +19,9 @@ class HomeController(ControllerBase):
 
     @sideeffect
     async def add_blogpost( self, 
-        payload: NewBlogpost,
+        payload: str,
         session: AsyncSession = Depends(DatabaseDependencies.get_db_session)
     ) -> None:
-        new_blogpost = BlogPost(text=payload.text)
+        new_blogpost = BlogPost(text=payload)
         session.add(new_blogpost)
         await session.commit()

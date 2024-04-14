@@ -13,9 +13,7 @@ const CreatePost = ({ serverState }: { serverState: ServerState }) => {
         onClick={
           async () => {
             await serverState.add_blogpost({
-              requestBody: {
-                text: newBlogpost,
-              },
+                payload: newBlogpost.toString()
             });
             setNewBlogpost("");
           }}>
