@@ -7,9 +7,6 @@ from sqlmodel import select
 
 from intro_to_mountaineer.models.blogpost import BlogPost
 
-class NewBlogpost(BaseModel):
-    text: str
-
 class HomeController(ControllerBase):
     url = "/"
     view_path = "/app/home/page.tsx"
